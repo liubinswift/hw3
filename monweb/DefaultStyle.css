@@ -1,0 +1,504 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace global "com.viewscenes.global.*";
+@namespace menu "com.morcha4.frame.menu.*";
+@namespace menu1 "com.viewscenes.global.menu.*";
+@namespace module "com.viewscenes.module.*";
+@namespace tabbar "com.morcha4.ui.tabbar.*";
+@namespace supportClass "com.morcha4.skin.dataGrid.supportClass.*";
+@namespace system "com.morcha4.frame.system.*";
+@namespace contaners "com.morcha4.ui.contaners.*";
+@namespace customization "com.morcha4.customization.*";
+@namespace button "com.morcha4.ui.button.*";
+@namespace customization1 "com.viewscenes.module.customization.*";
+@namespace dropdownList "com.morcha4.skin.dropdownList.*";
+@namespace advancedComboBox "com.morcha4.ui.advancedComboBox.*";
+@namespace button1 "com.morcha4.skin.button.*";
+@namespace spark "spark.skins.spark.*";
+@namespace local "*";
+@namespace tabbar1 "com.morcha4.skin.tabbar.*";
+@namespace playBar "com.viewscenes.utils.player.playBar.*";
+@namespace play "com.viewscenes.utils.player.*";
+@namespace timecomp "com.viewscenes.utils.timecomp.*";
+@namespace login "com.viewscenes.global.login.*";
+@namespace titleWindow "com.morcha4.skin.titleWindow.*";
+@namespace spark1 "mx.skins.spark.*";
+@namespace leader "com.viewscenes.module.leader.*";
+global{
+	modalTransparencyColor:#000000;
+	modalTransparency:0.5;
+	fontFamily:"微软雅黑";
+}
+s|Application{
+	fontSize:12;
+    color:#FFFFFF;
+}
+mx|ToolTip{
+	fontSize:12;
+}
+global|MainPan{
+	backgroundColor:#e6d99c;
+	logoSrc:'com/viewscenes/images/default/global1/logo.swf';
+	logoSrcBG:Embed(source='com/viewscenes/images/default/global1/banner_bg.png');
+	logoSrcBG2:Embed(source='com/viewscenes/images/default/global1/banner_bg2.png');
+	logoSrcBG3:Embed(source='com/viewscenes/images/default/global1/banner_bg3.png');
+	footerDownSrcBG:Embed(source='com/viewscenes/images/default/global1/footer_down.png');
+	footerUpSrcBG:Embed(source='com/viewscenes/images/default/global1/footer_up.png');
+	menu2BackgroundSrc:Embed(source='com/viewscenes/images/default/global1/bg.jpg');
+	bodyBackgroundSrc:Embed(source='com/viewscenes/images/default/global1/bg.jpg');
+	welcomeBackgroundSrc:Embed(source='com/viewscenes/images/default/global1/black.png',scaleGridTop='1',scaleGridBottom='2',scaleGridLeft='10',scaleGridRight='11');
+	closeUserSrc:Embed(source='com/viewscenes/images/default/global1/off.png');
+	ModuleBGSource:Embed(source='com/viewscenes/images/default/global1/main_bg.png',scaleGridTop='8',scaleGridBottom='600',scaleGridLeft='8',scaleGridRight='1000');
+	returnImg:Embed(source='com/viewscenes/images/default/global1/button/return_over.png');
+	cleanImg:Embed(source='com/viewscenes/images/default/global1/button/clean.gif');
+}
+login|LoginPan{
+	loginSwff:Embed(source='com/viewscenes/images/default/global1/button/full_over.png');
+	loginBottom:Embed(source='com/viewscenes/images/default/global1/longin_bottom.png',scaleGridTop='60',scaleGridBottom='170',scaleGridLeft='15',scaleGridRight='1218');
+}
+/**
+BGColor1:#e3e0d0;
+BGColor2:#e3e0d0;
+BGSource:Embed(source='com/viewscenes/images/default/global1/main_bg.png',scaleGridTop='8',scaleGridBottom='600',scaleGridLeft='8',scaleGridRight='1000');
+*/
+system|BasePage{
+	
+}
+
+menu1|Menu1Item{
+	rollOverSrc:Embed(source='com/viewscenes/images/default/global1/menu/first/over.png');
+	rollOverBGSrc:Embed(source='com/viewscenes/images/default/global1/menu/first/over.png');
+	BGSrc:Embed(source='com/viewscenes/images/default/global1/menu/first/over.png');
+	selectedColor:#861b6c;
+	overColor:#d40000;
+	color:#000000;
+	fontSize:13;
+	
+	fontWeight:"bold";
+	textAlignLast:center;
+	textAlign:center;
+}
+menu1|Menu2Item{
+	rollOverSrc:Embed(source='com/viewscenes/images/default/global1/menu/second/over.png');
+	selectedColor:#861b6c;
+	overColor:#d40000;
+	fontSize:13;
+	
+	fontWeight:"bold";
+	textAlignLast:center;
+	textAlign:center;
+}
+menu1|Menu3Item{
+	showSrc:Embed(source='com/viewscenes/images/default/global1/menu/three/menu3_up.png',scaleGridTop='1',scaleGridBottom='22',scaleGridLeft='40',scaleGridRight='50');
+	rollOverSrc:Embed(source='com/viewscenes/images/default/global1/menu/three/menu3_down.png',scaleGridTop='1',scaleGridBottom='32',scaleGridLeft='40',scaleGridRight='50');
+	selectedColor:#000000;
+	overColor:#000000;
+	upColor:#ffffff;
+	fontSize:12;
+	
+	textAlignLast:center;
+	textAlign:center;
+}
+menu1|Menu3{
+	contentGrid:4,4,6,6;
+}
+module|SampleModule{
+	overColor:#d40000; 
+	
+}
+s|DataGrid{
+	borderVisible:false;
+	alternatingRowColors:#ededed,#d5d5d5;
+	rollOverColors:#a3a3a3,#a3a3a3;
+	selectionColor:#5db0da;
+	skinClass:ClassReference("com.morcha4.skin.dataGrid.NoSelectDataGridSkin");
+	
+}
+s|DataGrid.leaderDataGrid{
+	borderVisible:false;
+	alternatingRowColors:#ededed,#d5d5d5;
+	rollOverColors:#a3a3a3,#a3a3a3;
+	selectionColor:#5db0da;
+	skinClass:ClassReference("com.morcha4.skin.dataGrid.leaderDataGridSkin");
+	
+}
+s|DataGrid s|Grid{
+	lineColor:#8e8e8e;
+	fontSize:12pt;
+	color:#000000;
+}
+s|GridColumnHeaderGroup{
+	lineColor:#852c19;
+	
+}
+supportClass|ImageFillDataGridHeaderRenderer{
+	headerBG:Embed(source="com/viewscenes/images/default/ui/dataGrid/headerline.png");
+	color:#FFFFFF;
+	fontSize:14pt;
+}
+supportClass|leaderImageFillDataGrid{
+	headerBG:Embed(source="com/viewscenes/images/default/ui/dataGrid/headerbg.jpg");
+	color:#FFFFFF;
+	fontSize:14pt;
+}
+s|Button{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:0,0,0,0;
+	BGDepth:9;
+	downBG:Embed(source='com/viewscenes/images/default/ui/button/down.png',scaleGridTop='1',scaleGridBottom='23',scaleGridLeft='25',scaleGridRight='26');
+	upBG:Embed(source='com/viewscenes/images/default/ui/button/down.png',scaleGridTop='1',scaleGridBottom='23',scaleGridLeft='25',scaleGridRight='26');
+	overBG:Embed(source='com/viewscenes/images/default/ui/button/up.png',scaleGridTop='1',scaleGridBottom='23',scaleGridLeft='25',scaleGridRight='26');
+	color:#593118;
+	
+	fontSize:13;
+	
+}
+s|Button.renderer{
+	
+	fontSize:12;
+}
+s|Button.state{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	downBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/stateSelected.png');
+	upBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/state.png');
+	overBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/stateSelected.png');
+	color:#593118;
+	
+	fontSize:13;
+}
+s|Button.station{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	downBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/stationSelected.png');
+	upBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/station.png');
+	overBG:Embed(source='com/viewscenes/images/module/dailyBusiness/task/stationSelected.png');
+	color:#593118;
+	fontSize:13;
+}
+s|Button.loginButton{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/login_over.png');
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/login.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/login_over.png');
+}
+s|Button.leaderButton{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	downBG:Embed(source='com/viewscenes/images/default/global2/btn_hover_bg.png');
+	upBG:Embed(source='com/viewscenes/images/default/global2/btn_bg.png');
+	overBG:Embed(source='com/viewscenes/images/default/global2/btn_hover_bg.png');
+}
+
+s|Button.mainBack{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/back.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/back.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/back_over.png');
+}
+s|Button.mainGo{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/go.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/go.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/go_over.png');
+}
+s|Button.mainRefresh{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/reload.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/reload.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/reload_over.png');
+}
+s|Button.mainMini{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/mini.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/mini.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/mini_over.png');
+}
+s|Button.mainFull{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/full.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/full.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/full_over.png');
+}
+s|Button.mainClose{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/close.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/close.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/close_over.png');
+}
+
+s|Button.windowButton{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/ui/button/button_bg.png');
+	downBG:Embed(source='com/viewscenes/images/default/ui/button/button_bg.png');
+	overBG:Embed(source='com/viewscenes/images/default/ui/button/button_bg.png');
+}
+tabbar|VButtonBarButton{
+	selectColor:#a12102;
+	color:#ffffff;
+	jLeft:Embed(source="com/viewscenes/images/default/ui/tabBar/juchi_left.png");
+	jTop:Embed(source="com/viewscenes/images/default/ui/tabBar/juchi.png");
+	jBottom:Embed(source="com/viewscenes/images/default/ui/tabBar/juchi_bottom.png");
+	source:Embed(source="com/viewscenes/images/default/ui/tabBar/bg.png");
+	selectSource:Embed(source="com/viewscenes/images/default/ui/tabBar/selectbg.png");
+	overSource:Embed(source="com/viewscenes/images/default/ui/tabBar/overbg.png");
+	
+	fontWeight:bold;
+	fontSize:13;
+	numCol:1;
+}
+playBar|playBar{
+	backgroundColors:#eaeaea,#cacaca;
+}
+playBar|PlayButton{
+	playUrl:Embed(source='com/viewscenes/images/default/player/play.png');
+	_playUrl:Embed(source='com/viewscenes/images/default/player/play.png');
+	pauseUrl:Embed(source='com/viewscenes/images/default/player/zt.png');
+	_pauseUrl:Embed(source='com/viewscenes/images/default/player/zt.png');
+}
+playBar|PlayButton.leader{
+	playUrl:Embed(source='com/viewscenes/images/default/player/new/playnew.png');
+	_playUrl:Embed(source='com/viewscenes/images/default/player/new/playnew.png');
+	pauseUrl:Embed(source='com/viewscenes/images/default/player/new/playnew.png');
+	_pauseUrl:Embed(source='com/viewscenes/images/default/player/new/playnew.png');
+}
+playBar|StopButton{
+	stopUrl:Embed(source='com/viewscenes/images/default/player/stop.png');
+	_stopUrl:Embed(source='com/viewscenes/images/default/player/stop.png');
+}
+playBar|StopButton.leader{
+	stopUrl:Embed(source='com/viewscenes/images/default/player/new/stopnew.png');
+	_stopUrl:Embed(source='com/viewscenes/images/default/player/new/stopnew.png');
+}
+playBar|JYButton{
+	jyUrl:Embed(source='com/viewscenes/images/default/player/sy.png');
+	_jyUrl:Embed(source='com/viewscenes/images/default/player/jy.png');
+}
+playBar|FullButton{
+	_fullUrl:Embed(source='com/viewscenes/images/default/player/qp.png');
+	fullUrl:Embed(source='com/viewscenes/images/default/player/qp.png');
+}
+
+play|PlayerNew{
+	gbImg:Embed(source='com/viewscenes/images/default/player/new/radio.png',scaleGridTop='110',scaleGridBottom='250',scaleGridLeft='60',scaleGridRight='500');
+}
+
+s|DropDownList{
+	skinClass:ClassReference("com.morcha4.skin.dropdownList.DropDownListSkin");
+	color:#000000;
+	borderColor:#434343;
+	bgColor:#ffffff;
+	rollOverColor:#74cdff;
+	selectionColor:#fbd551;
+	alternatingItemColors:#ffffff,#cccccc;
+}
+dropdownList|DropDownListButtonSkin{
+	fillColors:#ffffff,#cccccc;
+	lightColor:#fbd551;
+	borderColor:#434343;
+	dividColor:#ffffff;
+	arrowColor:#434343;
+}
+
+s|ComboBox{
+	skinClass:ClassReference("com.morcha4.skin.comboBox.ComboBoxSkin");
+	focusSkin:ClassReference("null");
+	color:#000000;
+	borderColor:#434343;
+	bgColor:#ffffff;
+	rollOverColor:#74cdff;
+	selectionColor:#fbd551;
+	alternatingItemColors:#faf8ef,#f3edd8;
+}
+/*s|ComboBox s|TextInput{
+}*/
+advancedComboBox|AdvancedCombobox{
+	focusSkin:ClassReference("null");
+	color:#000000;
+	borderColor:#434343;
+	bgColor:#ffffff;
+	rollOverColor:#74cdff;
+	selectionColor:#fbd551;
+	alternatingItemColors:#ffffff,#cccccc;
+}
+s|TextInput{
+	skinClass:ClassReference("com.morcha4.skin.textInput.TextInputSkin");
+	focusSkin:ClassReference("null");
+	bgColor:#ffffff;
+	borderColor:#434343;
+	bgAlpha:1;
+	color:#000000;
+}
+s|TitleWindow.map{
+	skinClass:ClassReference("com.viewscenes.utils.titleWindow.TitleWindowSkin");
+	closeButtonRightOff:-65;
+	closeButtonTopOff:0;
+	titleBGSrc:'com/viewscenes/images/default/global1/what.png';
+	color:#000000;
+}
+s|TitleWindow.map s|Button#closeButton{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/map/cloes.png');
+	downBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/map/cloes.png');
+	overBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/map/cloes.png');
+}
+s|TitleWindow.map contaners|BorderContainer#border{
+	borderBackground:Embed(source='com/viewscenes/images/default/ui/titleWindow/map/bg.jpg',scaleGridTop='1',scaleGridBottom='770',scaleGridLeft='1',scaleGridRight='1366');
+	contentGrid:5,5,5,25;
+}
+s|TitleWindow{
+    skinClass:ClassReference("com.morcha4.skin.titleWindow.TitleWindowSkin");
+	closeButtonRightOff:-50;
+	closeButtonTopOff:10;
+	titleBGSrc:'com/viewscenes/images/default/ui/titleWindow/title_bg.png';
+	color:#000000;
+}
+s|TitleWindow contaners|BorderContainer#border{
+	borderBackground:Embed(source='com/viewscenes/images/default/ui/titleWindow/content_bg.png',scaleGridTop='40',scaleGridBottom='45',scaleGridLeft='34',scaleGridRight='35');
+	contentGrid:5,5,5,25;
+}
+s|TitleWindow s|Button#closeButton{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/close_bg.png');
+	downBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/close_bg.png');
+	overBG:Embed(source='com/viewscenes/images/default/ui/titleWindow/close_hover_bg.png');
+}
+s|Button.mainClose{
+	skinClass:ClassReference("com.morcha4.skin.button.BorderButtonSkin");
+	borderBackground:Embed(source='com/viewscenes/images/default/global1/what.png');
+	contentGrid:1,1,1,1;
+	BGDepth:9;
+	upBG:Embed(source='com/viewscenes/images/default/global1/button/close.png');
+	downBG:Embed(source='com/viewscenes/images/default/global1/button/close.png');
+	overBG:Embed(source='com/viewscenes/images/default/global1/button/close_over.png');
+}
+s|TabBar{
+	skinClass:ClassReference("com.morcha4.skin.tabbar.TabbarSkin");
+	color:#000000;
+}
+tabbar1|TabbarButtonSkin{
+	upColor:#ffffff;
+	selectColor:#000000;
+	upSrc:Embed(source="com/viewscenes/images/default/ui/tabBar/hbar/over.png",scaleGridTop='12',scaleGridBottom='13',scaleGridLeft='6',scaleGridRight='8');
+	overSrc:Embed(source="com/viewscenes/images/default/ui/tabBar/hbar/up.png",scaleGridTop='12',scaleGridBottom='13',scaleGridLeft='6',scaleGridRight='8');
+	selectSrc:Embed(source="com/viewscenes/images/default/ui/tabBar/hbar/up.png",scaleGridTop='12',scaleGridBottom='13',scaleGridLeft='6',scaleGridRight='8');
+}
+contaners|TitleContainer{
+	fontWeight:bold;
+	
+	fontSize:14;
+	topOff:15;
+	titleBGSrc:Embed(source='com/viewscenes/images/default/ui/border/title.png',scaleGridTop='14',scaleGridBottom='16',scaleGridLeft='24',scaleGridRight='25');
+	borderBackground:Embed(source='com/viewscenes/images/default/ui/border/kuang.png',scaleGridTop='10',scaleGridBottom='15',scaleGridLeft='10',scaleGridRight='15');
+	contentGrid:5,5,5,5;
+}
+
+
+.MChSel{
+	border-color:red;
+	border-style:inset;
+}
+.MChNoSel{
+	border-style:none;
+}
+
+.AlertTitle
+{ 
+	font-size: 12pt; 
+	font-weight: normal;
+	font-style: normal;
+} 
+.AlertMessage
+{
+	font-size: 12pt;
+	font-weight: normal;
+	font-style: normal;
+}
+contaners|GroupBox{
+	skinClass:ClassReference("com.morcha4.skin.groupBox.GroupBoxSkin");
+	borderColor:#ff0000;
+	borderAlpha:1;
+	titleColor:#0000ff;
+}
+mx|Alert{
+	color:#000000
+}
+mx|NavBar{
+	color:#000000
+}
+button|PressAbleButton.green{
+	upSrc:Embed(source="com/viewscenes/images/default/ui/button/PressBtnGreen.png");
+	downSrc:Embed(source="com/viewscenes/images/default/ui/button/PressBtnDownGreen.png");
+	pressDistance:5;
+	upsColor:#ffffff;
+	oversColor:#ffff00;
+}
+timecomp|TimeNew{
+	color:#000000;
+}
+s|ToggleButton.record{
+	skinClass:ClassReference("com.morcha4.skin.button.PressToggleButtonSkin");
+	upSrc:Embed(source="com/viewscenes/images/default/ui/button/recordup.png");
+	downSrc:Embed(source="com/viewscenes/images/default/ui/button/recorddown.png");
+}
+s|ToggleButton.detail{
+	skinClass:ClassReference("com.morcha4.skin.button.PressToggleButtonSkin");
+	upSrc:Embed(source="com/viewscenes/images/default/ui/button/detail.png");
+	downSrc:Embed(source="com/viewscenes/images/default/ui/button/hide_detail.png");
+	
+}
+
+s|Panel{
+	skinClass:ClassReference("com.viewscenes.module.onlineBusiness.parameterSet.MyPanelSkin");
+	borderColor:#000000;
+	borderAlpha:1;
+}
+s|Panel.spectrum{
+	skinClass:ClassReference("spark.skins.spark.PanelSkin");
+}
+contaners|BGAbleContainer.dataBGImg{
+	backgroundImage:Embed(source="com/viewscenes/images/module/parameterSet/data_bg.png");
+}
+leader|OnlineListenModule{
+	leftBGImg:Embed(source='com/viewscenes/images/module/leader/kuang.png',scaleGridTop='30',scaleGridBottom='31',scaleGridLeft='30',scaleGridRight='31');
+}
+leader|RecordQueryModule{
+	leftBGImg:Embed(source='com/viewscenes/images/module/leader/kuang.png',scaleGridTop='30',scaleGridBottom='31',scaleGridLeft='30',scaleGridRight='31');
+}

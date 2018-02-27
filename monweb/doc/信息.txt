@@ -1,0 +1,11 @@
+MessageReport的webservice上报地址为
+http://10.15.6.12:8080/hw/services/MessageReportWS
+方法为 reportMessage
+参数为 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 上报信息-->
+<MessageReport>
+	<!-- 上报时间-->
+	<ReportTime>2012-8-8 08:08:08</ReportTime>
+	<!-- 上报内容-->
+	<ReportDescription>国际1 通道 无信号</ReportDescription>
+</MessageReport>

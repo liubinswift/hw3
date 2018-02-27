@@ -1,0 +1,69 @@
+需求:
+	在做报表时有在表格(datagrid)中直接编辑/修改单元格数据的需求
+	
+解决办法:
+	使用itemEditor(编辑器).
+	itemEditor感觉上类似itemRenderer(渲染器).
+	渲染器的作用是用特定的形式(组件)展示一个单元格的数据,而编辑器是用特定的形式(组件)编辑一个单元格中的数据.
+	例如我们可以用文本的方式在表格中显示时间数据,但是当需要编辑修改该时间时(单击该单元格),单元格变为一个可选择的
+  时间控件,用户选择后继续用文本的方式显示在单元格中.
+  	可见,渲染器在表格生成的时候会全部显示出来用以展示数据,而编辑器只是在某单元格需要被修改时(用户单击)才会显示出
+  来,等用户编辑完成后(点击该单元格以外的地方),又会用渲染器展示该单元格而编辑器此时被销毁.
+
+最简单的实现:
+	设该列(mx:DataGridColumn)的editable属性为true,可实现由flex默认编辑器(textInput)编辑;
+
+为表格的某列使用自定义编辑器的基本步骤:
+  	0.首先当然要有作为编辑器的组件(类);
+  	A.设该列(mx:DataGridColumn)的editable属性为true;
+  	B.设该列的itemEditor属性为作为编辑器的类的全路径.(与渲染器的设置方法相同);
+  	
+举例:(下拉菜单编辑器)
+	在mor.Editors.ComboboxEditor中实现了下拉框的编辑器.
+	用户单击使用了该编辑器的单元格后,单元格变为一个下拉菜单.
+	用户从中选择数据,单击该单元格以外的地方,单元格中的数据变为用户所编辑的数据.同时表格数据源中相应数据也被更新.
+	源码:
+	01  <?xml version="1.0" encoding="utf-8"?>
+	02	<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	03	<mx:Script>
+	04		<![CDATA[
+	05			import mx.controls.dataGridClasses.DataGridColumn;
+	06			import mx.events.DataGridEvent;
+	07			import mx.collections.ArrayCollection;
+	08			import mor.Editors.ComboboxEditor;
+	09			private function handleedit(event:DataGridEvent):void{
+	10				var editordata:Object=event.itemRenderer.data;
+	11				switch(((event.currentTarget as DataGrid).columns[event.columnIndex] as DataGridColumn).headerText){
+	12					case "age":{
+	13						mor.Editors.ComboboxEditor.datap=['15','16','17'];
+	14	//					Alert.show(editordata.name);
+	15						break;
+	16					}
+	17				}
+	18			}
+	19		]]>
+	20	</mx:Script>
+	21		<mx:DataGrid editable="true" id="dg"  itemEditBegin="handleedit(event)" dataProvider="{[{name:'name1',age:'17',address:'北京'},{name:'name2',age:'16',address:'上海'},{name:'name3',age:'15',address:'广州'}]}">
+	22			<mx:columns>
+	23				<mx:DataGridColumn dataField="name" editable="false"/>
+	24				<mx:DataGridColumn dataField="age"  itemEditor="mor.Editors.ComboboxEditor" editable="true" />
+	25				<mx:DataGridColumn dataField="address"/>
+	26			</mx:columns>
+	27		</mx:DataGrid>
+	28	</mx:Application>
+	说明:
+		24行中的行使用了下拉菜单编辑器.
+		21行中监听itemEditBegin是为了给当前下拉菜单设置数据源,13行的语句即为设置数据源的语句,所设置的值应该为Array.
+		若不能直接在监听方法中设置下拉菜单的值而需要异步的去后台获取,则必须先在这里将数据源设为[],下拉菜单将暂时显示为"正
+	   在获取",异步结果得到后应将正确的值赋给下拉菜单.
+	     具体看监听方法handleedit:
+	     A.10行获得的editordata为当前编辑单元格所在行的数据源.14行中editordata.name取到了当前编辑单元格所在行的name属性.
+	     B.11行的选择语句判断的字符串是表格列头的字符串,代表当前编辑的是该列.
+	     C.12行代表当前编辑的是年龄列,此时需要设置下拉菜单的数据源,可以像示例中直接设置,也可以先设为[],异步的去后台获取后再设置.
+	     D.可以增加case处理不同列中编辑器的初始化.
+	     
+	 限制:只适用于表格的一列代表数据源中一个属性(存在datafield属性)的情况.但现在我还没想到这样做无法解决的问题.以后遇到再解决.
+	     
+	     
+  	
+	

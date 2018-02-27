@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="config"/>
+	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.jstl_1.2">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web.jstl"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/activation.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/ant-1.5.3.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/axis.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/axis-ant.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/classes12.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/commons-discovery.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/commons-fileupload-1.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/commons-io-1.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/commons-net-1.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jacob.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jcommon-1.0.12.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jdom.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jfreechart-1.0.9.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/jxl.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/mail.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/pesb_client.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/plugin.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/saaj.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/sso.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/ssosdk902.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/tools.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/wsdl4j.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/xercesImpl-2.8.1.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/xmlParserAPIs.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/backport-util-concurrent.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/cfgatewayadapter.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/commons-httpclient-3.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/commons-logging.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/concurrent.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/flex-messaging-common.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/flex-messaging-core.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/flex-messaging-opt.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/flex-messaging-proxy.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/flex-messaging-remoting.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/jdom.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/jmaskBlazeds.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/jsf-api.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/jsf-impl.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Flex/xalan.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Json/ccommons-lang.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Json/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Json/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Json/json-lib-2.2.3-jdk15.jar"/>
+	<classpathentry kind="lib" path="D:/workspaces/hw_lib/Json/morph-1.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="monweb/WEB-INF/classes"/>
+</classpath>

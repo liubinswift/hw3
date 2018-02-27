@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<AppConfig>
+	<LogConfig>
+<!--
+logger的属性 name为logger的名字
+             path为log文件存放的目录
+             type为日志的类型，可使用的值有screen,file,both,none
+             method为记录日志的方法，normal为一般的函数调用方式，thread为线程方式(暂时不支持)
+             autosplit为自动分割日志文件的方式，可以使用的值有hourly,daily,weekly,monthly,yearly
+-->	
+	  <Logger name="applog" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">
+	  </Logger>
+	  <Logger name="devicelog" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">
+	  </Logger>
+	  <Logger name="soapclient" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">
+	  </Logger>
+	  <Logger name="soapserver" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">
+	  </Logger>
+	  <Logger name="autoupRecord" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">
+　　　　  </Logger>
+	  <Logger name="autoup2mess" 
+       	          path="c:\log\" 
+                  type="file"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">		  
+	  </Logger>
+	    <Logger name="logMsg" 
+       	          path="c:\log\logMsg\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">		  
+	  </Logger>
+   <Logger name="exportlog" 
+       	          path="c:\log\" 
+                  type="both"
+	          level="debug"
+		  method="normal"
+		  autosplit="daily">		  
+	  </Logger>
+	   <DefaultLogger name="applog"/>
+</LogConfig>
+</AppConfig>

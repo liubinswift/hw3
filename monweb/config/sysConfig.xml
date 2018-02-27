@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<serverConfig>
+		<config max="2">
+			<serverProxy id="dataServer" type="RO">
+				<endPoint url="http://localhost:8080/hw/messagebroker/amf" timeout="20" waitTime="1000" isDeafult="true"/>
+			</serverProxy>
+			<serverProxy id="dataServer_app" type="RO">
+			
+			<endPoint url="http://localhost:8080/hw/messagebroker/amf" timeout="20" waitTime="1000" isDeafult="true"/>
+				<!-- >endPoint url="http://114.251.47.196/hw/messagebroker/amf" timeout="20" waitTime="1000"/-->
+			</serverProxy>
+		</config>
+	</serverConfig>
+	
+</configuration>
+

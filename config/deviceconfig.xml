@@ -1,0 +1,39 @@
+<config>
+	<center srccode="CBT01" />
+	<upcenter srccode="CBT01" />	
+	<msgtimedout>
+		<default>30</default>
+	</msgtimedout>
+	<msgtype>
+	
+		<radio8 version="8" type="Radio" />
+	</msgtype>
+	<allv8>
+		 <para  value="v8"/>
+	</allv8>
+	<innerdevice>
+	</innerdevice>
+<filtermanager>
+		<down>
+		</down>
+		<up>
+			<filter class="com.viewscenes.device.framework.MsgCaseFilter" />
+		</up>
+	</filtermanager>
+	<processormanager>
+		<down>
+			<processor class="com.viewscenes.device.framework.MsgDeviceProcessor" />
+			<processor class="com.viewscenes.device.framework.MsgLogProcessor" />
+		</down>
+		<up>
+			<processor class="com.viewscenes.device.framework.MsgServerUpProcessor" />
+			<processor class="com.viewscenes.device.framework.MsgLogProcessor" />		
+		</up>
+	</processormanager>
+	<reportlistenner>
+		<listenner class="com.viewscenes.logic.autoupmess2db.AutoUpMess2DB" />
+	</reportlistenner>
+	<msgfw>
+		<center code="CBT01" url="http://10.10.6.12:8000/servlet/deviceservlet" />
+	</msgfw>
+</config>

@@ -1,0 +1,28 @@
+2012-08-27
+-- Create table
+create table RADIO_MESSAGE_REPORT_TAB
+(
+  ID                 NUMBER,
+  REPORT_TIME        DATE,
+  REPORT_DESCRIPTION VARCHAR2(50)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column RADIO_MESSAGE_REPORT_TAB.REPORT_TIME
+  is '上报时间';
+comment on column RADIO_MESSAGE_REPORT_TAB.REPORT_DESCRIPTION
+  is '上报内容';
+ =======================================================================
+ -- Add/modify columns 
+alter table ZRES_FREQ_TIME_TAB modify DIRECTION varchar2(100);
+ 
+  

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Appconfig>	
+	<DBPoolConfig>
+		<!-- DBPool name="pooldb" driver="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@192.168.15.6:1521:orahw" user="hw" password="hw" minconnection="2" maxconnection="10" log="false" ischecked="0"/-->
+		<DBPool name="pooldb" driver="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@10.0.1.16:1521:hw" user="hw" password="u3nfltd2" minconnection="2" maxconnection="10" log="false" ischecked="0"/>
+		<!--  DBPool name="pooldb_yysb" driver="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@192.168.1.123:1521:hw" user="hwnew" password="hwnew" minconnection="2" maxconnection="10" log="false" ischecked="0"/--><!--配置语音识别数据库  -->
+		<DefaultDBPool name="pooldb"/> 
+	</DBPoolConfig>
+	
+	<!--缓存表配置  -->
+	<tablecachconfig>
+		<!--城市-->
+	    <para table="res_city_tab" sql="select * from res_city_tab where 1=1 order by city asc" key="id" />
+	    <!--前端站点-->
+		<para table="res_headend_tab" sql="select * from res_headend_tab t where is_delete=0 order by t.code asc" key="code" />
+		<!--大洲-->
+		<para table="dic_state_tab" sql="select * from dic_state_tab t order by t.state_name asc" key="state" />
+		
+		<!--用户-->
+		<para table="sec_user_tab" sql="select * from sec_user_tab t where t.is_delete=0 order by t.user_name asc" key="state" />
+		<!--用户日志类型-->
+		<para table="dic_state_tab" sql="select * from dic_state_tab t order by t.state_name asc" key="state" />
+		<!--发射台 由于一个发射台在表中有重复，目前只取出发射台的名称 -->
+		<para table="res_transmit_station_tab" sql="select * from res_transmit_station_tab t   where t.is_delete=0 order by name asc " key="station_id" />
+		
+		<!--语言-->
+		<para table="zdic_language_tab" sql="select * from zdic_language_tab t    where t.is_delete=0 order by language_name asc" key="language_id" />
+	
+	    <!--服务区-->
+		<para table="dic_servicesarea_tab" sql="select * from dic_servicesarea_tab t order by id asc" key="id" />
+	</tablecachconfig>
+	<!--  缓存表配置  -->
+	<!-- 每天定时导出到内网的数据 -->
+	<eachDayExportData>
+	       <para name="设备报警" table="radio_equ_alarm_tab" sql="select * from radio_equ_alarm_tab t where t.alarm_datetime&gt;=trunc(sysdate-1) and t.alarm_datetime&lt;trunc(sysdate)" />
+	       <para name="指标报警" table="radio_abnormal_tab"  sql="select * from radio_abnormal_tab t where t.abnormal_date&gt;=trunc(sysdate-1) and t.abnormal_date&lt;trunc(sysdate)"/>
+	       <para name="录音打分" table="radio_mark_zst_view_tab"  sql="select * from radio_mark_zst_view_tab t where t.mark_datetime&gt;=trunc(sysdate-1) and t.mark_datetime&lt;trunc(sysdate)" />
+	       <!--  para name="指标数据" table="radio_quality_result_tab"  sql="  select * from radio_quality_result_tab t where t.check_datetime&gt;=sysdate-1 and t.check_datetime&lt;sysdate" /-->
+	       <para name="频谱数据" table="radio_spectrum_result_tab"  sql="  select * from radio_spectrum_result_tab t where t.check_datetime&gt;=trunc(sysdate-1) and t.check_datetime&lt;trunc(sysdate)" />
+	       <!--  para name="频偏数据" table="radio_offset_result_tab"  sql="  select * from radio_offset_result_tab t where t.check_datetime&gt;=sysdate-1 and t.check_datetime&lt;sysdate" /-->
+	       <para name="录音数据" table="radio_stream_result_tab"  sql="   select * from radio_stream_result_tab t where t.store_datetime&gt;=trunc(sysdate-1) and t.store_datetime&lt;trunc(sysdate)" />
+	      
+	 </eachDayExportData>
+	<cachconfig>
+		<para table="res_headend_tab" sql="select * from res_headend_tab where is_delete=0" index="head_id" alltable="res_headend_tab"/>
+	</cachconfig>
+		<!-- 用来监测系统运行状态. -->
+	<NetCheck>
+	    <para label="web服务器备up" ip="10.0.0.1" key="id" />
+		<para label="web服务器主up" ip="10.0.0.1" key="id" />
+		<para label="存储服务器1up" ip="127.0.0.1" key="id" />
+		<para label="存储服务器2up" ip="127.0.0.1" key="id" />
+		<para label="防病毒服务器up" ip="127.0.0.1" key="id" />
+		<para label="服务器群1up" ip="127.0.0.1" key="id" />
+		<para label="服务器群2up" ip="127.0.0.1" key="id" />
+		<para label="服务器群3up" ip="127.0.0.1" key="id" />
+		<para label="负载均衡设备up" ip="127.0.0.1" key="id" />
+		<para label="工作管理机组1up" ip="127.0.0.1" key="id" />
+		<para label="工作管理机组2up" ip="127.0.0.1" key="id" />
+		<para label="光纤交换机1up" ip="127.0.0.1" key="id" />
+		<para label="光纤交换机2up" ip="127.0.0.1" key="id" />
+		<para label="交换机up" ip="127.0.0.1" key="id" />
+		<para label="内网通讯服务器" ip="127.0.0.1" key="id" />
+		<para label="数据库服务器1up" ip="127.0.0.1" key="id" />
+		 <para label="数据库服务器2up" ip="127.0.0.1" key="id" />
+		<para label="应用服务器备up" ip="10.0.0.1" key="id" />
+		<para label="应用服务器主up" ip="10.0.0.1" key="id" />
+		
+		
+		<!--  para label="web服务器备up" ip="10.1.1.10" key="id" />
+		<para label="web服务器主up" ip="10.1.1.11" key="id" />
+		<para label="存储服务器1up" ip="10.1.1.245" key="id" />
+		<para label="存储服务器2up" ip="10.1.1.246" key="id" />
+		<para label="防病毒服务器up" ip="127.0.0.1" key="id" />
+		<para label="服务器群1up" ip="127.0.0.1" key="id" />
+		<para label="服务器群2up" ip="127.0.0.1" key="id" />
+		<para label="服务器群3up" ip="127.0.0.1" key="id" />
+		<para label="负载均衡设备up" ip="10.1.1.251" key="id" />
+		<para label="工作管理机组1up" ip="127.0.0.1" key="id" />
+		<para label="工作管理机组2up" ip="127.0.0.1" key="id" />
+		<para label="光纤交换机1up" ip="10.1.1.247" key="id" />
+		<para label="光纤交换机2up" ip="10.1.1.248" key="id" />
+		<para label="交换机up" ip="10.1.2.2" key="id" />
+		<para label="内网通讯服务器" ip="127.0.0.1" key="id" />
+		<para label="数据库服务器1up" ip="10.1.1.5" key="id" />
+		<para label="数据库服务器2up" ip="10.1.1.5" key="id" />
+		<para label="应用服务器备up" ip="10.1.1.15" key="id" />
+		<para label="应用服务器主up" ip="10.1.1.16" key="id" /-->
+	</NetCheck>
+	<!-- 运行位置 1:Internet, 0:Local -->
+	<RunConfig runat="0">
+		<param ip="localhost" port="8888" priority="1"/>
+		<param ip="10.1.1.11" port="8888" priority="2"/>
+		<param ip="10.1.1.15" port="8888" priority="3"/>
+		<param ip="10.1.1.16" port="8888" priority="4"/>
+	</RunConfig>
+	
+</Appconfig>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<service>	
+	<ws name="radio_webservice_old" url="http://10.10.6.12:8000/axis/"/>
+	<ws name="radio_webservice_new" url="http://10.10.5.88:9000/gb2/services/"/>
+</service>

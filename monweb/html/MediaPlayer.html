@@ -1,0 +1,132 @@
+<html>
+<script>
+var oPlayer = document.all.oVideoPlayer;
+
+function initPlayer(){
+	oVideoPlayer.stretchToFit=true;
+	oVideoPlayer.uiMode="none";
+}
+
+function setPlayUrl(){
+	oVideoPlayer.URL="";
+}
+
+function notifyParent(){
+	//parent.jmask.theMedia.addMedia(oVideoPlayer);
+}
+
+document.setUrl = function setUrl(param){
+	parent.jmask.theMedia.addMedia(param[0],param[1],param[2],param[3],oVideoPlayer);
+}
+document.setCmmbUrl = function setCmmbUrl(param){
+	parent.jmask.theMedia.addCMMBMedia(param[0],param[1],param[2],param[3],param[4],oVideoPlayer);
+}
+document.setRoundUrl = function setRoundUrl(param){
+	parent.jmask.theMedia.setRoundUrl(param,oVideoPlayer);
+}
+//func,Flex�ص����
+function kltvRealTime(chid,headCode,freq,selfobj,oVideoPlayer,func){
+	parent.jmask.theMedia.addMedia(headCode,freq,selfobj,oVideoPlayer,func);
+}
+
+document.playUrl = function playUrl(VideoUrl){
+	//alert(">>>>>>play>>>>"+VideoUrl[0]);
+	oVideoPlayer.URL=VideoUrl[0];
+}
+document.setplay = function setplay(){
+	oVideoPlayer.controls.play();
+}
+
+document.setstop = function setstop(){
+	oVideoPlayer.controls.stop();
+}
+
+document.setfull = function setfull(){
+	oVideoPlayer.fullScreen=true;
+}
+
+document.setvolume = function setvolume(param){
+	oVideoPlayer.settings.volume=param;
+}
+
+document.setpause = function setpause(){
+	oVideoPlayer.controls.pause();
+}
+
+document.onResize = function onResize(){
+	oVideoPlayer.style.width = "100%";
+	oVideoPlayer.style.height = "100%";
+}
+document.setReload = function setReload(){
+//	alert("reload");
+	document.location.reload();
+}
+</script>
+<SCRIPT LANGUAGE = "JScript"  FOR = "oVideoPlayer" EVENT = PlayStateChange(NewState)>
+<!--
+// Test for the current state.
+// If playing, display the name of the current media.
+try{
+switch (NewState){
+    case 1:
+    //playerStatus = "播放器状态：停止";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 2:
+    //playerStatus = "播放器状态：暂停";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 3:
+    //playerStatus = "播放器状态：正在播放";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 6:
+    //playerStatus = "播放器状态：正在缓存数据...";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 7:
+    //playerStatus = "播放器状态：等待";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 8:
+    //playerStatus = "播放器状态：播放结束";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    //parent.onPlayerStopped();
+    break;
+
+    case 9:
+    //playerStatus = "播放器状态：正在传输数据...";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    case 10:
+    //playerStatus = "播放器状态：就绪";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+    break;
+
+    // Other cases go here.
+
+    default:
+    //playerStatus = "播放器状态：其它";
+    window.parent.document.getElementById("Broadcast").setPlayerStatus(NewState+"]["+oVideoPlayer.URL);
+}
+}catch(e){
+}
+//-->
+</SCRIPT>
+<body leftmargin="0" topmargin="0" onload="initPlayer();notifyParent();" bgcolor="#101417" scroll="no">
+<OBJECT ID="oVideoPlayer" name="oVideoPlayer" width="100%" height="100%"
+  CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" style="display:block">
+  <param name="WindowlessVideo" value="0">
+  <param   name="wmode"   value="transparent">
+  <!-- <param   name="PlayCount"   value="1000">
+ <param NAME="url" value="rtsp://192.168.1.114:8854/H264VideoTest"> 
+  <param name="AutoStart" value="1">-->  
+</OBJECT>
+</body>
+</html>
