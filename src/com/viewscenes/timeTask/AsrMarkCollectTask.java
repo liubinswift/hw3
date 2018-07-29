@@ -23,7 +23,7 @@ public class AsrMarkCollectTask {
 	private final static Scheduler scheduler = new Scheduler();// 调度器
 	private final int hourOfDay, minute, second;// 每天触发的时间点
 	private final int maxProecessFileCount = 800;		//每次录音文件最大处理量
-	private final int interval = 10;				//执行收集录音文件的时间间隔
+	private final int interval = 6;				//执行收集录音文件的时间间隔
 
 	
 	// 语音识别发送队列
