@@ -88,7 +88,7 @@
 		<para label="应用服务器主up" ip="10.1.1.16" key="id" /-->
 	</NetCheck>
 	<!-- 运行位置 1:Internet, 0:Local -->
-	<RunConfig runat="0">
+	<RunConfig runat="1">
 		<param ip="localhost" port="8888" priority="1"/>
 		<param ip="10.1.1.11" port="8888" priority="2"/>
 		<param ip="10.1.1.15" port="8888" priority="3"/>

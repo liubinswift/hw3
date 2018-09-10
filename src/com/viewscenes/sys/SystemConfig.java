@@ -92,4 +92,9 @@ public class SystemConfig {
     	return paramConfigMap.get("ftp");
     }
     
+    //ÐÂ²¥·ÅµØÖ·
+    public static String getNewPlayUrl(){
+    	return paramConfigMap.get("new_play_url");
+    }
+    
 }
