@@ -603,8 +603,13 @@ public class RecFileQuery {
         sql +=    " ) run, ";
         sql +=    " res_headend_tab hd ";
         sql +=    " where t.head_id = hd.head_id ";
+<<<<<<< HEAD
         sql +=    " and t.start_datetime>sysdate-32 ";//????????????????????????????
 
+=======
+        sql +=    " and t.start_datetime>sysdate-32 ";//七天以前的数据不进行语音识别了。
+        sql +=    " and t.start_datetime<to_date('2018-07-22 16:00:00','yyyy-mm-dd hh24:mi:ss')";//七天以前的数据不进行语音识别了。
+>>>>>>> 609a2231484c119c3cb6a5032be158911fe5b15d
         sql +=    " and t.url = mark.mark_file_url(+) ";
         sql +=    " and t.runplan_id = run.runplan_id(+) ";
         sql +=    " and mark.mark_id is null ";
