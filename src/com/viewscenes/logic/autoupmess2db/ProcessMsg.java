@@ -4,6 +4,7 @@ package com.viewscenes.logic.autoupmess2db;
 
 import com.viewscenes.logic.autoupmess2db.Exception.*;
 import com.viewscenes.logic.autoupmess2db.MessProcess.*;
+import com.viewscenes.logic.autoupmess2db.MessProcess.v8.HeadendStateChange;
 import com.viewscenes.logic.autoupmess2db.MessProcess.v8.RadioEquipmentAlarmHistoryReport;
 import com.viewscenes.logic.autoupmess2db.MessProcess.v8.RadioEquipmentLogHistoryQuery;
 import com.viewscenes.logic.autoupmess2db.MessProcess.v8.RadioEquipmentStatusRealtimeReport;
@@ -69,9 +70,12 @@ public class ProcessMsg extends Thread {
 
       _handleMap.put("equipmentalarmhistoryreport", new RadioEquipmentAlarmHistoryReport());	    //广播设备报警数据主动上报接口
       _handleMap.put("offsethistoryreport", new RadioOffsetHistoryReport());	    				//广播频偏历史查询返回数据主动上报接口
-      
+     
       _handleMap.put("ipchange", new RadioIpChange());	    
-      _handleMap.put("fileretriever", new RadioStreamHistoryQuery());	    											//站点ip上传主动上报接口
+      _handleMap.put("fileretriever", new RadioStreamHistoryQuery());	
+      
+      _handleMap.put("headendStateChange", new HeadendStateChange());
+    
   }
 
   public void run(){

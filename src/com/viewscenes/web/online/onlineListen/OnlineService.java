@@ -15,6 +15,7 @@ import javazoom.jl.decoder.Bitstream;
 import javazoom.jl.decoder.BitstreamException;
 import javazoom.jl.decoder.Header;
 
+import org.apache.axis.utils.StringUtils;
 import org.jmask.web.controller.EXEException;
 
 import com.viewscenes.axis.asr.ASRClient;
@@ -444,7 +445,17 @@ public class OnlineService {
 						+ realTimeUrlCmdBean.getCode() + "]" + "没有返回可播放的URL",
 						realTimeUrlCmdBean);
 		}
-
+       if(url!=null) {
+    	   //这里需要判断是否迁移后的站点，如果是迁移后的站点需要修改对应的播放地址；
+    	   ResHeadendBean resHeadend = Common.getHeadendBeanByCode(realTimeUrlCmdBean.getCode());
+    	   if(resHeadend!=null&&("2").equals(resHeadend.getCom_protocol())) {
+    		   if(StringUtils.isEmpty(realTimeUrlCmdBean.getEncode())) {
+    			   url =  SystemConfig.getNewPlayUrl() +realTimeUrlCmdBean.getCode()+realTimeUrlCmdBean.getFreq()+".mp3";
+    		   }else {
+    			   url =  SystemConfig.getNewPlayUrl() +realTimeUrlCmdBean.getCode()+realTimeUrlCmdBean.getEquCode()+realTimeUrlCmdBean.getFreq()+".mp3";
+    		   }
+    	   }
+       }
 		return url;
 	}
 

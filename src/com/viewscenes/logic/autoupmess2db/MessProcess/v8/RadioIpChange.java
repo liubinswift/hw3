@@ -13,8 +13,10 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.axis.utils.StringUtils;
 import org.jdom.Element;
 
+import com.viewscenes.bean.ResHeadendBean;
 import com.viewscenes.bean.pub.HeadOnlineStatusBean;
 import com.viewscenes.dao.database.DbComponent;
 import com.viewscenes.dao.database.DbException;
@@ -25,10 +27,12 @@ import com.viewscenes.logic.autoupmess2db.MessProcess.IUpMsgProcessor;
 import com.viewscenes.pub.GDSet;
 import com.viewscenes.pub.GDSetException;
 import com.viewscenes.sys.SystemCache;
+import com.viewscenes.sys.SystemConfig;
 import com.viewscenes.sys.TableInfoCache;
 import com.viewscenes.util.LogTool;
 import com.viewscenes.util.StringTool;
 import com.viewscenes.util.UtilException;
+import com.viewscenes.web.common.Common;
 
 public class RadioIpChange implements IUpMsgProcessor {
 
@@ -37,36 +41,35 @@ public class RadioIpChange implements IUpMsgProcessor {
 	public void processUpMsg(Element root) throws SQLException,
 			UpMess2DBException, GDSetException, DbException, UtilException,
 			NoRecordException {
-		java.util.Date start = Calendar.getInstance().getTime();
-
 		headCode = root.getAttributeValue("SrcCode");
-		IpChangeBean bean = getIpChangeBean(root);
-		HeadOnlineStatusBean onbean = SystemCache.onLineStatusMap.get(bean.getHeadCode());
-		String oldIp = "";
-		String oldPort = "";
-		if(onbean!=null){
-			oldIp = onbean.getIp();
-			oldPort = onbean.getPort();
-		}
-		updateHeadonLineStatusMap(bean);
-		if(bean.getIp() == null || bean.getIp().equals("")){
-			LogTool.info("autoup2mess","IP上报:ip为空");
-		} else{
-			if(bean.getIp().equals(oldIp) && bean.getPort().equals(oldPort)){
-				LogTool.info("autoup2mess","oldIp=="+oldIp+"&&bean.getIp()=="+bean.getIp()+"&&oldPort=="+oldPort+"&&bean.getPort()=="+bean.getPort());
-			} else{
-				try{
-					ipChangeToDb(bean);
-					bean.setIp(oldIp);
-					bean.setPort(oldPort);
-				} catch(UpMess2DBException ex){
-					throw ex;
-				}
-			}
-		}
-
-		java.util.Date end = Calendar.getInstance().getTime();
-//		LogTool.debug("站点ip上传上报入库花时：" + (end.getTime() - start.getTime()));
+		  //这里需要判断是否迁移后的站点，如果是迁移后的站点不需要修改对应的下发地址；
+ 	   ResHeadendBean resHeadend = Common.getHeadendBeanByCode(headCode);
+ 	   if(resHeadend!=null&&!("2").equals(resHeadend.getCom_protocol())) {
+ 		  IpChangeBean bean = getIpChangeBean(root);
+ 			HeadOnlineStatusBean onbean = SystemCache.onLineStatusMap.get(bean.getHeadCode());
+ 			String oldIp = "";
+ 			String oldPort = "";
+ 			if(onbean!=null){
+ 				oldIp = onbean.getIp();
+ 				oldPort = onbean.getPort();
+ 			}
+ 			updateHeadonLineStatusMap(bean);
+ 			if(bean.getIp() == null || bean.getIp().equals("")){
+ 				LogTool.info("autoup2mess","IP上报:ip为空");
+ 			} else{
+ 				if(bean.getIp().equals(oldIp) && bean.getPort().equals(oldPort)){
+ 					LogTool.info("autoup2mess","oldIp=="+oldIp+"&&bean.getIp()=="+bean.getIp()+"&&oldPort=="+oldPort+"&&bean.getPort()=="+bean.getPort());
+ 				} else{
+ 					try{
+ 						ipChangeToDb(bean);
+ 						bean.setIp(oldIp);
+ 						bean.setPort(oldPort);
+ 					} catch(UpMess2DBException ex){
+ 						throw ex;
+ 					}
+ 				}
+ 			}
+ 	   }
 	}
 
 	public IpChangeBean getIpChangeBean(Element root)  throws UpMess2DBException{

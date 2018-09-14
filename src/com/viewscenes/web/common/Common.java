@@ -185,7 +185,10 @@ public class Common {
 	
 	public static ResHeadendBean getHeadendBeanByCode(String headcode){
 		ArrayList list = queryDataForCacheMap(headcode,SystemTableCache.RES_HEAD_END_TAB);
-		ResHeadendBean head=(ResHeadendBean) list.get(0);
+		ResHeadendBean head =null;
+		if(list!=null&&list.size()>0) {
+			head=(ResHeadendBean) list.get(0);
+		}
 		return head;
 	}
 
