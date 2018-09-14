@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="hw573"
+  name="hw3"
   id="myeclipse.1275288194812"
   context-root="/hw"
   j2ee-spec="5.0"
-  archive="hw573.war">
+  archive="hw3.war">
   <attributes>
     <attribute name="webrootdir" value="/monweb" />
   </attributes>
