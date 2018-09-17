@@ -39,16 +39,17 @@ public class HeadendStateChange implements IUpMsgProcessor {
 			UpMess2DBException, GDSetException, DbException, UtilException,
 			NoRecordException {
 		String clientCode = root.getAttributeValue("SrcCode");
-		if("headendUpClient".equals(clientCode))
+		if("headendUpClient".equalsIgnoreCase(clientCode))
 		{
 			HeadendStateBean bean = getHeadendStateBean(root);
 			updateHeadonLineStatusMap(bean);
+			TableInfoCache s = new TableInfoCache("res_headend_tab");
 		}
 	}
 
 	public HeadendStateBean getHeadendStateBean(Element root)  throws UpMess2DBException{
 		HeadendStateBean bean = new HeadendStateBean();
-		Element ipele = root.getChild("headendStateChange");
+		Element ipele = root.getChild("headendstatechange");
 		String online = ipele.getAttributeValue("online"); 
 		String offline = ipele.getAttributeValue("offline"); 
 		bean.setOffline(offline);
@@ -86,12 +87,14 @@ public class HeadendStateChange implements IUpMsgProcessor {
 	public void updateHeadonLineStatusMap(HeadendStateBean bean) throws UpMess2DBException {
 		try{
 			if(bean!=null) {
-				String[] onlineHeadCodes= bean.getOffline().split(",");
+				String[] onlineHeadCodes= bean.getOnline().split(",");
 				String[] offlineHeadCodes= bean.getOffline().split(",");
 				for(String code :onlineHeadCodes) {
+					if(code.length()>0)
 					updateHeadState(code,"1");
 				}
 				for(String code :offlineHeadCodes) {
+					if(code.length()>0)
 					updateHeadState(code,"0");
 				}
 			}

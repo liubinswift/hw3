@@ -376,6 +376,7 @@ public class OnlineService {
 
 		// 检查站点代码
 		// throw new EXEException("", "站点代码有误！", "");
+		realTimeUrlCmdBean.setLastUrl(null);
 		MsgStreamRealtimeQueryCmd.RealtimeStream[] reals = new MsgStreamRealtimeQueryCmd.RealtimeStream[] { new MsgStreamRealtimeQueryCmd.RealtimeStream(
 				realTimeUrlCmdBean.getEquCode(), realTimeUrlCmdBean
 						.getLastUrl(), realTimeUrlCmdBean.getBand(),
@@ -431,13 +432,7 @@ public class OnlineService {
 //			url = (String) urls.get(0);
 			
 			
-			String address = StringTool.getIpAndPortByUrl(url);
-			
-			String ip  = address.split(":")[0];
-			int port = Integer.parseInt(address.split(":")[1]);
-			
-			if (runat.equals("1"))
-				RealRecordManager.start45RecRecord(realTimeUrlCmdBean, ip, port);
+	
 			
 		} else {
 			if (actionTemp.equals("开始"))
@@ -454,6 +449,22 @@ public class OnlineService {
     		   }else {
     			   url =  SystemConfig.getNewPlayUrl() +realTimeUrlCmdBean.getCode()+realTimeUrlCmdBean.getEquCode()+realTimeUrlCmdBean.getFreq()+".mp3";
     		   }
+    		   try {
+    			System.out.println("实时播放地址返回播放器延迟两秒开始！");
+				Thread.sleep(2000);
+				System.out.println("实时播放地址返回播放器延迟两秒结束！");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	   }else {
+    			String address = StringTool.getIpAndPortByUrl(url);
+    			
+    			String ip  = address.split(":")[0];
+    			int port = Integer.parseInt(address.split(":")[1]);
+    			
+    			if (runat.equals("1"))
+    				RealRecordManager.start45RecRecord(realTimeUrlCmdBean, ip, port);
     	   }
        }
 		return url;

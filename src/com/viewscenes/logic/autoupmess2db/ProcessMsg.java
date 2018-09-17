@@ -74,7 +74,7 @@ public class ProcessMsg extends Thread {
       _handleMap.put("ipchange", new RadioIpChange());	    
       _handleMap.put("fileretriever", new RadioStreamHistoryQuery());	
       
-      _handleMap.put("headendStateChange", new HeadendStateChange());
+      _handleMap.put("headendstatechange", new HeadendStateChange());
     
   }
 

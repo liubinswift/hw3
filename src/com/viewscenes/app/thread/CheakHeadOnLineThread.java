@@ -43,7 +43,7 @@ import org.jdom.Element;
         public void run(){
             while (true) {
 				try {
-					  this.checkOnline();
+					//  this.checkOnline();
 				} catch (Exception e) {
 					LogTool.fatal(e);
 				}
