@@ -349,7 +349,6 @@ public class OnlineService {
 		String actionTemp = "";
 		if (realTimeUrlCmdBean.getAction().equalsIgnoreCase("Stop")) {
 			actionTemp = "停止";
-		 
 			//运行在外网的内网才录音
 		  if (runat.equals("1")){
 			  RealRecordManager.stop45SecRecord(realTimeUrlCmdBean);
@@ -444,7 +443,7 @@ public class OnlineService {
     	   //这里需要判断是否迁移后的站点，如果是迁移后的站点需要修改对应的播放地址；
     	   ResHeadendBean resHeadend = Common.getHeadendBeanByCode(realTimeUrlCmdBean.getCode());
     	   if(resHeadend!=null&&("2").equals(resHeadend.getCom_protocol())) {
-    		   if(StringUtils.isEmpty(realTimeUrlCmdBean.getEncode())) {
+    		   if(realTimeUrlCmdBean.getEquCode()==null||realTimeUrlCmdBean.getEquCode().length()==0) {
     			   url =  SystemConfig.getNewPlayUrl() +realTimeUrlCmdBean.getCode()+realTimeUrlCmdBean.getFreq()+".mp3";
     		   }else {
     			   url =  SystemConfig.getNewPlayUrl() +realTimeUrlCmdBean.getCode()+realTimeUrlCmdBean.getEquCode()+realTimeUrlCmdBean.getFreq()+".mp3";
