@@ -1,10 +1,12 @@
 package com.viewscenes.web.sysmgr.dicManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.jmask.web.controller.EXEException;
 
+import com.viewscenes.bean.ResHeadendBean;
 import com.viewscenes.bean.ZdicLanguageBean;
 import com.viewscenes.dao.database.DbException;
 
@@ -96,8 +98,8 @@ public class DicService {
 			} catch (Exception e) {
 				LogTool.fatal(e);
 				return new EXEException("",e.getMessage(),"");
-			}
-	    	
+			}			resObj.get("resultList");
+		
 	    	return resObj;
 	}
 	

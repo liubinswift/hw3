@@ -84,7 +84,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 
     String line;
 
-    while ( (line = br.readLine()) != null) {
+    while ( (line = br.readLine()) != null&&line.length()>0) {
 
       msg.append(line);
 
@@ -97,6 +97,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 //   MessageServer.execute(msg.toString());
   }
   catch(Exception e){
+	br.close();
     LogTool.warning(e);
   }
   }
