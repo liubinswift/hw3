@@ -87,6 +87,9 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
     while ( (line = br.readLine()) != null&&line.length()>0) {
 
       msg.append(line);
+      if(line.length()>2048){
+    	  return ;
+      }
 
     }
     if (msg.length() == 0) {
