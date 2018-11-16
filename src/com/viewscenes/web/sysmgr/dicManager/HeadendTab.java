@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.io.File;
 
 
+import java.util.Map;
 import jxl.Sheet;
 import jxl.Workbook;
 
@@ -29,16 +30,36 @@ import com.viewscenes.sys.TableInfoCache;
 import flex.messaging.io.amf.ASObject;
 
 public class HeadendTab {
-	
-	
-	/**
-	 * 
-	 * <p>class/function:com.viewscenes.web.sysmgr.dicManager
-	 * <p>explain:查询前端数据 ，如果查询出错会返回错误信息
-	 * <p>author-date:张文 2012-7-26
-	 * @param:
-	 * @return:
-	 */
+
+	private static  HashMap<String, String> headMap ;
+	static {
+		headMap = new HashMap<String, String>();
+		headMap.put("???_???_NI_V8", "b");
+		headMap.put("???_???_713_V8", "d");
+		headMap.put("???_???_FHD_V8", "d");
+		headMap.put("????_???_VS_V8", "d");
+		headMap.put("??_???_AMFT_V8", "d");
+		headMap.put("??22?_???_V8", "d");
+		headMap.put("??_???_TS_V8", "d");
+
+		headMap.put("???_???_NI_V8", "d");
+		headMap.put("???_???_713_V8", "d");
+		headMap.put("???_???_FHD_V8", "d");
+		headMap.put("????_???_VS_V8", "d");
+		headMap.put("??22?_???_V8", "d");
+		headMap.put("??_???_AMFT_V8", "d");
+		headMap.put("??_???_TS_V8", "d");
+
+	}
+
+		/**
+         *
+         * <p>class/function:com.viewscenes.web.sysmgr.dicManager
+         * <p>explain:查询前端数据 ，如果查询出错会返回错误信息
+         * <p>author-date:张文 2012-7-26
+         * @param:
+         * @return:
+         */
 	
     public Object getHeadend(ASObject obj){
     	return new DicService().getHeadend(obj);
@@ -194,8 +215,17 @@ public class HeadendTab {
          String manufacturer = reString((String)asObj.get("manufacturer"));
 //         String post = reString((String)asObj.get("post"));
 //         String service_name = reString((String)asObj.get("service_name"));
-                  
-         updateSql = "update res_headend_tab set  ip='"+ip+"',principal_phone='"+principal_phone
+		/**
+		 * ?????????????????
+		 */
+		if(!("2").equals(com_protocol)){
+			String defaultUrl =  headMap.get(manufacturer);
+			if(defaultUrl!=null){
+				url= defaultUrl;
+			}
+
+		}
+			updateSql = "update res_headend_tab set  ip='"+ip+"',principal_phone='"+principal_phone
          +"',default_language='"+default_language+"',code='"+code+"',site='"+site+"',url='"
          +url+"',manufacturer='"+manufacturer+"',longitude='"+longitude+"',com_protocol='"+com_protocol+"',latitude='"+latitude+"' where head_id ="+head_id;
 		try {
