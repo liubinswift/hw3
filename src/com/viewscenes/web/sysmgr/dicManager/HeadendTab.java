@@ -34,21 +34,21 @@ public class HeadendTab {
 	private static  HashMap<String, String> headMap ;
 	static {
 		headMap = new HashMap<String, String>();
-		headMap.put("???_???_NI_V8", "b");
-		headMap.put("???_???_713_V8", "d");
-		headMap.put("???_???_FHD_V8", "d");
-		headMap.put("????_???_VS_V8", "d");
-		headMap.put("??_???_AMFT_V8", "d");
-		headMap.put("??22?_???_V8", "d");
-		headMap.put("??_???_TS_V8", "d");
-
-		headMap.put("???_???_NI_V8", "d");
-		headMap.put("???_???_713_V8", "d");
-		headMap.put("???_???_FHD_V8", "d");
-		headMap.put("????_???_VS_V8", "d");
-		headMap.put("??22?_???_V8", "d");
-		headMap.put("??_???_AMFT_V8", "d");
-		headMap.put("??_???_TS_V8", "d");
+		headMap.put("圣世祺_遥控站_FHD_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("圣世祺_遥控站_NI_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("圣世祺_遥控站_713_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("圣世祺_采集点_NI_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("圣世祺_采集点_713_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("圣世祺_采集点_FHD_V8", "http://10.0.0.1:9921/Receiver/Enter/");
+		headMap.put("中电22所_遥控站_V8", "http://10.0.0.1:6666");
+		headMap.put("中电22所_采集点_V8", "http://10.0.0.1:6666");
+		headMap.put("金石威视_遥控站_VS_V8", "http://10.0.0.1:7070/download");
+		headMap.put("金石威视_采集点_VS_V8", "http://10.0.0.1:7070/download");
+		headMap.put("泰顺_遥控站_TS_V8", "http://10.0.0.1:800");
+		headMap.put("泰顺_采集点_TS_V8", "http://10.0.0.1:800");
+		headMap.put("聚星_遥控站_JXI3000_V8", "http://10.0.0.1:900");
+		headMap.put("度纬_遥控站_AMFT_V8", "http://10.0.0.1:9981/Receiver/Enter/");
+		headMap.put("度纬_采集点_AMFT_V8", "http://10.0.0.1:9981/Receiver/Enter/");
 
 	}
 
@@ -215,16 +215,7 @@ public class HeadendTab {
          String manufacturer = reString((String)asObj.get("manufacturer"));
 //         String post = reString((String)asObj.get("post"));
 //         String service_name = reString((String)asObj.get("service_name"));
-		/**
-		 * ?????????????????
-		 */
-		if(!("2").equals(com_protocol)){
-			String defaultUrl =  headMap.get(manufacturer);
-			if(defaultUrl!=null){
-				url= defaultUrl;
-			}
-
-		}
+	
 			updateSql = "update res_headend_tab set  ip='"+ip+"',principal_phone='"+principal_phone
          +"',default_language='"+default_language+"',code='"+code+"',site='"+site+"',url='"
          +url+"',manufacturer='"+manufacturer+"',longitude='"+longitude+"',com_protocol='"+com_protocol+"',latitude='"+latitude+"' where head_id ="+head_id;

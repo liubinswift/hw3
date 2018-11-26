@@ -63,11 +63,17 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 
     response.setContentType("text/html");
 
-    PrintWriter out = new PrintWriter(response.getOutputStream());
-
-    out.println("<HTML><BODY>OK</BODY></HTML>");
-
-    out.flush();
+    PrintWriter out = null;
+    try{
+    	out= new PrintWriter(response.getOutputStream());
+        out.println("<HTML><BODY>OK</BODY></HTML>");
+    }catch(Exception e){
+    	LogTool.fatal(e);
+    }finally{
+    	if(out!=null){
+          out.flush();
+    	}
+    }
 
   }
 
@@ -75,33 +81,34 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 
   private void doWork(HttpServletRequest request) throws IOException {
 
-    request.setCharacterEncoding("GB2312");
-    BufferedReader br = request.getReader();
 
-
+   BufferedReader br =null;
    try{
-    StringBuffer msg = new StringBuffer();
-
-    String line;
-
-    while ( (line = br.readLine()) != null&&line.length()>0) {
-
-      msg.append(line);
-      if(line.length()>2048){
-    	  return ;
-      }
-
-    }
-    if (msg.length() == 0) {
-      return;
-    }
-//    LogTool.info("devicelog",msg.toString());
-    MessageServer.setMsg2Queue(msg.toString());
-//   MessageServer.execute(msg.toString());
-  }
-  catch(Exception e){
-	br.close();
-    LogTool.warning(e);
-  }
+	    request.setCharacterEncoding("GB2312");
+	    br = request.getReader();
+	    StringBuffer msg = new StringBuffer();
+	
+	    String line;
+	
+	    while ( (line = br.readLine()) != null&&line.length()>0) {
+	
+	      msg.append(line);
+	      if(line.length()>2048){
+	    	  return ;
+	      }
+	    }
+	    if (msg.length() == 0) {
+	      return;
+	    }
+	//   LogTool.info("devicelog",msg.toString());
+	     MessageServer.setMsg2Queue(msg.toString());
+    //   MessageServer.execute(msg.toString());
+	  }catch(Exception e){
+	    LogTool.warning(e);
+	  }finally{
+		  if(br!=null){
+		    br.close(); 
+		  }
+	  }
   }
 }
