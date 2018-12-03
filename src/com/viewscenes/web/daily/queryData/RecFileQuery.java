@@ -70,7 +70,7 @@ public class RecFileQuery {
 	//	sql += " and run.is_delete = 0 ";
 		
 		//效果录音
-   		if (recType.equals("0")){
+   		if (recType.equals("1")){
    			//选择了国际台或海外运行图
    			if (!runplanType.equals("0")){
    				sql += " and run.runplan_type_id= "+runplanType+" ";

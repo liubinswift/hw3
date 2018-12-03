@@ -62,6 +62,7 @@ public class DicService {
 		    String site = (String)obj.get("site");
 		    String code = (String)obj.get("code");
 		    String com_protocol = (String)obj.get("com_protocol");
+		    String com_id = (String)obj.get("com_id");
 //		    String is_delete = (String)obj.get("is_delete");
 		    
 		    
@@ -76,7 +77,13 @@ public class DicService {
 	        		sql += " and (com_protocol is null or com_protocol ='1')";
 	        	}
 	        }
-	        	
+	        if(!com_id.equals("")){
+	        	if(com_id.equals("0")){
+	        		 sql += " and com_id  ='"+com_id+"'";
+	        	}else {
+	        		sql += " and com_id !='0'";
+	        	}
+	        }
 	        
 	        if(shortname.length()>0)
 	        	sql += " and shortname  like('%"+shortname+"%')";
