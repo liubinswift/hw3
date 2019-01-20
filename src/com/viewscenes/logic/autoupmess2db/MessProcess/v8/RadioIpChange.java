@@ -116,8 +116,13 @@ public class RadioIpChange implements IUpMsgProcessor {
 			String subSql = "";
 			if(url != null && url.length()>0 && url.indexOf("http://")>-1 && url.indexOf("/")>-1){
 				String ipport = url.substring(url.indexOf("http://")+7);
-				subSql = " , url='http://"+bean.getIp()+":"+bean.getPort()+ipport.substring(ipport.indexOf("/"),ipport.length())+"' "; 
-			}
+					if(ipport.indexOf("/")!=-1){
+					  subSql = " , url='http://"+bean.getIp()+":"+bean.getPort()+ipport.substring(ipport.indexOf("/"),ipport.length())+"' "; 
+					}else
+					{
+					  subSql = " , url='http://"+bean.getIp()+":"+bean.getPort()+"' "; 		
+					}
+				}
 			sql = "update res_headend_tab set " +
 					"ip = '" + bean.getNetIp() + "' " +
 					subSql +
@@ -132,20 +137,12 @@ public class RadioIpChange implements IUpMsgProcessor {
 	}
 	public static void main(String[] args )
 	{
-		String regex="//(.*?):(.*?)";
-		Pattern p=Pattern.compile(regex);
-		String t="http://10.1.2.20:8080/enter/";
-		Matcher m=p.matcher(t);
-		while(m.find()){
-			System.out.println(m.group(1));
-			System.out.println(m.group(2));
+		String url ="'http://5.38.175.128:9981/Receiver/Enter/";
+		if(url != null && url.length()>0 && url.indexOf("http://")>-1 && url.indexOf("/")>-1){
+			String ipport = url.substring(url.indexOf("http://")+7);
+			String subSql = " , url='http://10.0.1.2:8080"+ipport.substring(ipport.indexOf("/"),ipport.length())+"' "; 
+		    System.out.print(subSql);
 		}
-		
-		String reg = "((\\d+\\.){3}\\d+)\\:(\\d+)";
-		String url = "http://10.1.2.20:8080/enter/";
-		String ip = url.replaceAll(reg, "$1");
-		String port = url.replaceAll(reg, "$3");
-		System.out.println(ip+":"+port);
 	}
 	/**
 	 * 更新站点是否在线缓存map

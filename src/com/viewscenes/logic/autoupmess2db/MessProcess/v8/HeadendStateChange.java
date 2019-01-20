@@ -89,14 +89,17 @@ public class HeadendStateChange implements IUpMsgProcessor {
 			if(bean!=null) {
 				String[] onlineHeadCodes= bean.getOnline().split(",");
 				String[] offlineHeadCodes= bean.getOffline().split(",");
-				for(String code :onlineHeadCodes) {
-					if(code.length()>0)
-					updateHeadState(code,"1");
-				}
-				for(String code :offlineHeadCodes) {
-					if(code.length()>0)
-					updateHeadState(code,"0");
-				}
+			
+					if(onlineHeadCodes.length>0)
+					{
+					  updateHeadState(onlineHeadCodes,"1");
+					}
+
+					if(offlineHeadCodes.length>0)
+					{
+					  updateHeadState(offlineHeadCodes,"0");
+					}
+
 			}
 			
 		} catch (Exception ex) {
@@ -104,28 +107,39 @@ public class HeadendStateChange implements IUpMsgProcessor {
 		}
 	}
 
-	private void updateHeadState(String code, String is_online) throws DbException {
-		
-		HeadOnlineStatusBean onlineBean = SystemCache.onLineStatusMap.get(code);
-		
-		if(onlineBean == null){
-			onlineBean = new HeadOnlineStatusBean();
-			onlineBean.setIntervalReport("10");
-			onlineBean.setCode(code);
+	private void updateHeadState(String[] codes, String is_online) throws DbException {
+		String updateSql = "";
+		for(int i=0;i<codes.length;i++){
+			String code =codes[i];
+			updateSql =updateSql+"'"+code+"',";
 		}
-        onlineBean.setLastSaveTime(new Date());
-		onlineBean.setFristCreate(false);
-		onlineBean.setIs_online(is_online);
-		if(onlineBean.getIs_online().equals("1"))
-		{
-			String updateOnlineString="update res_headend_tab set is_online= 1 where  upper(code)=upper('" + code + "')";
-			DbComponent.exeUpdate(updateOnlineString);
-		}else {
-			String updateOnlineString="update res_headend_tab set is_online= 0 where  upper(code)=upper('" + code+ "')";
-			DbComponent.exeUpdate(updateOnlineString);
+		if(updateSql.length()>0){
+			updateSql = updateSql.substring(0, updateSql.length()-1);
 		}
-		
-		SystemCache.onLineStatusMap.put(onlineBean.getCode(), onlineBean);
+		if(updateSql.length()>1){
+			if(is_online.equals("1"))
+			{
+				String updateOnlineString="update res_headend_tab set is_online= 1 where  code in (" + updateSql + ")";
+				DbComponent.exeUpdate(updateOnlineString);
+			}else {
+				String updateOnlineString="update res_headend_tab set is_online= 0 where  code in(" + updateSql+ ")";
+				DbComponent.exeUpdate(updateOnlineString);
+			}
+		}
+		for(int i=0;i<codes.length;i++){
+			String code =codes[i];
+			HeadOnlineStatusBean onlineBean = SystemCache.onLineStatusMap.get(code);
+			if(onlineBean == null){
+				onlineBean = new HeadOnlineStatusBean();
+				onlineBean.setIntervalReport("10");
+				onlineBean.setCode(code);
+			}
+	        onlineBean.setLastSaveTime(new Date());
+			onlineBean.setFristCreate(false);
+			onlineBean.setIs_online(is_online);
+			SystemCache.onLineStatusMap.put(onlineBean.getCode(), onlineBean);
+		}
+	
 	}
 	
 }

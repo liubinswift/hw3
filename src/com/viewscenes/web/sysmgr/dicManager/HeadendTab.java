@@ -173,7 +173,7 @@ public class HeadendTab {
 		String url = (String) asObj.get("url");
         String code = reString((String)asObj.get("code"));
 //         String shortname = reString((String)asObj.get("shortname"));
-//         String com_id = reString((String)asObj.get("com_id"));
+         String com_id = reString((String)asObj.get("com_id"));
          String com_protocol = reString((String)asObj.get("com_protocol"));
         String ip = reString((String)asObj.get("ip"));
          String longitude = reString((String)asObj.get("longitude"));
@@ -218,7 +218,7 @@ public class HeadendTab {
 	
 			updateSql = "update res_headend_tab set  ip='"+ip+"',principal_phone='"+principal_phone
          +"',default_language='"+default_language+"',code='"+code+"',site='"+site+"',url='"
-         +url+"',manufacturer='"+manufacturer+"',longitude='"+longitude+"',com_protocol='"+com_protocol+"',latitude='"+latitude+"' where head_id ="+head_id;
+         +url+"',manufacturer='"+manufacturer+"',longitude='"+longitude+"',com_id='"+com_id+"',com_protocol='"+com_protocol+"',latitude='"+latitude+"' where head_id ="+head_id;
 		try {
 			DbComponent.exeUpdate(updateSql);
 			ResHeadendBean ResHeadendBean = getHeadendByCode(code);
