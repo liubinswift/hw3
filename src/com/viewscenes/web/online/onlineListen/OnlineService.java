@@ -375,7 +375,9 @@ public class OnlineService {
 
 		// 检查站点代码
 		// throw new EXEException("", "站点代码有误！", "");
-		realTimeUrlCmdBean.setLastUrl(null);
+		if(realTimeUrlCmdBean.getLastUrl()==null){
+		   realTimeUrlCmdBean.setLastUrl("");
+		}
 		MsgStreamRealtimeQueryCmd.RealtimeStream[] reals = new MsgStreamRealtimeQueryCmd.RealtimeStream[] { new MsgStreamRealtimeQueryCmd.RealtimeStream(
 				realTimeUrlCmdBean.getEquCode(), realTimeUrlCmdBean
 						.getLastUrl(), realTimeUrlCmdBean.getBand(),
