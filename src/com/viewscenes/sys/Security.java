@@ -8,6 +8,7 @@ import com.viewscenes.dao.database.DbComponent;
 import com.viewscenes.dao.DaoFactory;
 import com.viewscenes.dao.DAOOperator;
 import com.viewscenes.dao.DAOCondition;
+import com.viewscenes.util.LogTool;
 import com.viewscenes.util.StringTool;
 import com.viewscenes.dao.cache.DAOCacheComponent;
 
@@ -165,6 +166,7 @@ public class Security {
         errMsg = "用户名错误";
       }
     }
+    LogTool.info("applog","用户登录code:"+code+";ip:"+ip);
     return returnValue;
   }
 
