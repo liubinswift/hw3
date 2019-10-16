@@ -77,11 +77,11 @@ public class Security {
           errMsg = null;
         }
         else {
-          errMsg = "用户名/密码错误";
+          errMsg = "用户名或密码错误";
         }
       }
       else {
-        errMsg = "用户名/密码错误";
+        errMsg = "用户名或密码错误";
       }
     }
     return returnValue;
@@ -159,14 +159,14 @@ public class Security {
           errMsg = null;
         }
         else {
-          errMsg = "密码错误";
+          errMsg = "用户名或密码错误";
         }
       }
       else {
-        errMsg = "用户名错误";
+        errMsg = "用户名或密码错误";
       }
     }
-    LogTool.info("applog","用户登录code:"+code+";ip:"+ip);
+    LogTool.info("用户登录code:"+code+";ip:"+ip);
     return returnValue;
   }
 
@@ -197,7 +197,7 @@ public class Security {
       }
     }
     else {
-      errMsg = "用户名/密码错误";
+      errMsg = "用户名或密码错误";
     }
     return returnValue;
   }

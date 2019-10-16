@@ -218,6 +218,9 @@ public class RecFileQuery {
 				if(SystemConfig.runat.equals("1")){//Õ‚Õ¯µƒÕ‚Õ¯
 					url = url.replace(SystemConfig.getLocVideoUrl(), SystemConfig.getVideoUrl());
 				}
+				if(url!=null&&url.indexOf("10.1.1.31")!=-1){
+					url= url.replace("10.1.1.31", "10.1.1.15");
+				}
 				String report_type = (String)rowObj.get("report_type");
 				String is_stored = (String)rowObj.get("is_stored");
 //				String is_delete = (String)rowObj.get("is_delete");
@@ -374,7 +377,11 @@ public class RecFileQuery {
 					}
 					rmzvb.setEdit_user(edit_user);
 					rmzvb.setUnit((String)rowObj.get("unit"));
-					rmzvb.setMark_file_url((String)rowObj.get("mark_file_url"));
+					String mark_file_url  = (String)rowObj.get("mark_file_url");
+					if(mark_file_url!=null&&mark_file_url.indexOf("10.1.1.31")!=-1){
+						mark_file_url= mark_file_url.replace("10.1.1.31", "10.1.1.15");
+					}
+					rmzvb.setMark_file_url(mark_file_url);
 					rmzvb.setFile_name((String)rowObj.get("file_name"));
 					rmzvb.setFile_length((String)rowObj.get("file_length"));
 					rmzvb.setRecord_start_time((String)rowObj.get("record_start_time"));

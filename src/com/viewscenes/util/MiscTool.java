@@ -555,7 +555,7 @@ public class MiscTool {
 
     else if (code.equalsIgnoreCase("5")) {
 
-      desc = "用户名密码错误";
+      desc = "用户名或密码错误";
 
     }
 

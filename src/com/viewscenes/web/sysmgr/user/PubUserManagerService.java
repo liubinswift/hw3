@@ -272,7 +272,7 @@ public class PubUserManagerService {
 	            isLetter = true;
 	        }
 	    }
-	    String regex = "^[a-zA-Z0-9]{6,12}$";
+	    String regex = "^[a-zA-Z0-9]{8,12}$";
 	    boolean isRight = isDigit && isLetter && str.matches(regex);
 	    return isRight;
 	}
@@ -508,7 +508,7 @@ public class PubUserManagerService {
 					user.setRoleName(gd.getString(0, "role_name"));
 					
 				}else{
-					return new EXEException("","密码错误","");
+					return new EXEException("","用户名或密码错误","");
 				}
 			}
 			
