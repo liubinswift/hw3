@@ -218,9 +218,6 @@ public class RecFileQuery {
 				if(SystemConfig.runat.equals("1")){//外网的外网
 					url = url.replace(SystemConfig.getLocVideoUrl(), SystemConfig.getVideoUrl());
 				}
-				if(url!=null&&url.indexOf("10.1.1.31")!=-1){
-					url= url.replace("10.1.1.31", "10.1.1.15");
-				}
 				String report_type = (String)rowObj.get("report_type");
 				String is_stored = (String)rowObj.get("is_stored");
 //				String is_delete = (String)rowObj.get("is_delete");
@@ -377,11 +374,7 @@ public class RecFileQuery {
 					}
 					rmzvb.setEdit_user(edit_user);
 					rmzvb.setUnit((String)rowObj.get("unit"));
-					String mark_file_url  = (String)rowObj.get("mark_file_url");
-					if(mark_file_url!=null&&mark_file_url.indexOf("10.1.1.31")!=-1){
-						mark_file_url= mark_file_url.replace("10.1.1.31", "10.1.1.15");
-					}
-					rmzvb.setMark_file_url(mark_file_url);
+					rmzvb.setMark_file_url((String)rowObj.get("mark_file_url"));
 					rmzvb.setFile_name((String)rowObj.get("file_name"));
 					rmzvb.setFile_length((String)rowObj.get("file_length"));
 					rmzvb.setRecord_start_time((String)rowObj.get("record_start_time"));
@@ -538,7 +531,7 @@ public class RecFileQuery {
 	 */
 	public Object delSelectFile(String  ids){
 		
-		
+		System.out.println("删除录音文件id:"+ids);
 		String[] sqls =  new String[2];
 	
 		sqls[0] = " delete from radio_mark_zst_view_tab t where t.mark_file_url in(select url from " +
@@ -575,7 +568,7 @@ public class RecFileQuery {
 	 * 操作项：1.删除打分数据、2.删除录音数据、3.删除物理录音文件
 	 */
 	public Object delRecFile(RadioStreamResultBean rsrb){
-		
+	
 		String result_id = rsrb.getResult_id();
 		String[] sqls =  new String[1];
 		if (rsrb.getRadioMarkZstViewBean()!=null){

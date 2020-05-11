@@ -208,7 +208,7 @@ public class RadioStreamHistoryQuery implements IUpMsgProcessor {
           prepExeSQL.setString(8, url);
 
           prepExeSQL.setString(9, size);
-          prepExeSQL.setString(10, bean.getAmModulation());
+          prepExeSQL.setString(10, bean.getAmModulation()) ;
           prepExeSQL.setString(11, filename);
           prepExeSQL.setString(12, markFileName);
           prepExeSQL.setString(13, bean.getFmModulation());
